@@ -12,12 +12,44 @@
       padding: 0;
       background-color: #0a0a0a;
       color: #fff;
+      overflow: hidden; /* Evita el desplazamiento vertical */
     }
 
+    /* Fondo con estrellas */
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Coloca las estrellas detrás del contenido */
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Header */
     header {
-      background-color: #1a1a1a;
+      background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
       padding: 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
@@ -52,12 +84,13 @@
 
     /* Hero Section */
     .hero {
-      background: url('tech-background.jp') no-repeat center center/cover;
       height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-content h2 {
@@ -83,6 +116,8 @@
     section {
       padding: 50px 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     section h2 {
@@ -98,7 +133,7 @@
     }
 
     .proyecto, .servicio, .articulo {
-      background-color: #1a1a1a;
+      background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
       padding: 20px;
       border-radius: 10px;
       width: 30%;
@@ -122,7 +157,7 @@
       margin: 10px 0;
       border: 1px solid #00ffcc;
       border-radius: 5px;
-      background-color: #1a1a1a;
+      background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
       color: #fff;
     }
 
@@ -137,9 +172,11 @@
 
     /* Footer */
     footer {
-      background-color: #1a1a1a;
+      background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
       padding: 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     footer .redes-sociales a {
@@ -156,6 +193,9 @@
   </style>
 </head>
 <body>
+  <!-- Fondo con estrellas -->
+  <div id="stars"></div>
+
   <!-- Header -->
   <header>
     <div class="logo">
@@ -256,9 +296,24 @@
     <p>&copy; 2024 TECHNOLOGY2.0. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- JavaScript para las estrellas -->
   <script>
-    // Validación del formulario de contacto
+    // Crear estrellas dinámicamente
+    const starsContainer = document.getElementById('stars');
+    const numStars = 200; // Número de estrellas
+
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Velocidad aleatoria
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+  <!-- JavaScript para el formulario -->
+  <script>
     document.getElementById('contacto-form').addEventListener('submit', function (e) {
       e.preventDefault();
       alert('Gracias por contactarnos. Te responderemos pronto.');
