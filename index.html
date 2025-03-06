@@ -67,7 +67,7 @@
         }
 
         .productos {
-            display: none;
+            display: none; /* Inicialmente oculto */
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
@@ -377,15 +377,20 @@
             const mensajeNoEncontrado = document.getElementById('mensaje-no-encontrado');
             const botonMenuPrincipal = document.getElementById('boton-menu-principal');
 
+            // Ocultar todos los productos y secciones
             secciones.forEach(seccion => {
-                seccion.style.display = 'flex';
+                seccion.style.display = 'none';
             });
 
+            // Mostrar todos los productos (pero ocultos dentro de las secciones cerradas)
             productos.forEach(producto => {
                 producto.style.display = 'block';
             });
 
+            // Ocultar el mensaje de "Producto no encontrado"
             mensajeNoEncontrado.style.display = 'none';
+
+            // Ocultar el botón de "Regresar al menú principal"
             botonMenuPrincipal.style.display = 'none';
         }
     </script>
