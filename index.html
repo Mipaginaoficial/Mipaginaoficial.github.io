@@ -223,7 +223,7 @@
                     <p>S/ 10.00</p>
                     <button onclick="agregarAlCarrito('Motor DC 5V', 10.00)">Agregar al carrito</button>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="seccion">
@@ -235,7 +235,7 @@
                     <p>S/ 5.00</p>
                     <button onclick="agregarAlCarrito('Sensor de temperatura LM35', 5.00)">Agregar al carrito</button>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="seccion">
@@ -247,7 +247,7 @@
                     <p>S/ 25.00</p>
                     <button onclick="agregarAlCarrito('Microcontrolador ATmega328', 25.00)">Agregar al carrito</button>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="seccion">
@@ -259,7 +259,7 @@
                     <p>S/ 30.00</p>
                     <button onclick="agregarAlCarrito('PIC16F877A', 30.00)">Agregar al carrito</button>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="seccion">
@@ -271,7 +271,7 @@
                     <p>S/ 0.50</p>
                     <button onclick="agregarAlCarrito('Resistencia 1kΩ', 0.50)">Agregar al carrito</button>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="carrito">
@@ -336,10 +336,6 @@
             const mensajeNoEncontrado = document.getElementById('mensaje-no-encontrado');
             const botonMenuPrincipal = document.getElementById('boton-menu-principal');
 
-            secciones.forEach(seccion => {
-                seccion.style.display = 'none';
-            });
-
             let resultadosEncontrados = false;
 
             productos.forEach(producto => {
@@ -352,9 +348,18 @@
                 }
             });
 
+            secciones.forEach(seccion => {
+                const productosVisibles = seccion.querySelectorAll('.producto[style="display: block;"]');
+                if (productosVisibles.length > 0) {
+                    seccion.style.display = 'flex';
+                } else {
+                    seccion.style.display = 'none';
+                }
+            });
+
             if (resultadosEncontrados) {
                 mensajeNoEncontrado.style.display = 'none';
-                botonMenuPrincipal.style.display = 'none';
+                botonMenuPrincipal.style.display = 'block';
             } else {
                 mensajeNoEncontrado.style.display = 'block';
                 botonMenuPrincipal.style.display = 'block';
