@@ -162,85 +162,79 @@
         .seccion h2 {
             font-size: 2rem;
             margin-bottom: 20px;
+            cursor: pointer; /* Cambiar cursor a pointer */
+        }
+
+        .seccion .productos {
+            display: none; /* Ocultar productos inicialmente */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Electrónica Piura</h1>
-        <!-- Barra de búsqueda -->
         <div class="barra-busqueda">
             <input type="text" id="busqueda" placeholder="Buscar componentes..." oninput="filtrarProductos()">
         </div>
 
-        <!-- Sección de Motores -->
         <div class="seccion">
-            <h2>Motores</h2>
-            <div class="productos">
+            <h2 onclick="toggleProductos('motores')">Motores</h2>
+            <div class="productos" id="motores">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="Motor DC 5V">
                     <h3>Motor DC 5V</h3>
                     <p>S/ 10.00</p>
                     <button onclick="agregarAlCarrito('Motor DC 5V', 10.00)">Agregar al carrito</button>
                 </div>
-                <!-- Agrega más motores aquí -->
-            </div>
+                </div>
         </div>
 
-        <!-- Sección de Sensores -->
         <div class="seccion">
-            <h2>Sensores</h2>
-            <div class="productos">
+            <h2 onclick="toggleProductos('sensores')">Sensores</h2>
+            <div class="productos" id="sensores">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="Sensor de temperatura LM35">
                     <h3>Sensor de temperatura LM35</h3>
                     <p>S/ 5.00</p>
                     <button onclick="agregarAlCarrito('Sensor de temperatura LM35', 5.00)">Agregar al carrito</button>
                 </div>
-                <!-- Agrega más sensores aquí -->
-            </div>
+                </div>
         </div>
 
-        <!-- Sección de Microcontroladores -->
         <div class="seccion">
-            <h2>Microcontroladores</h2>
-            <div class="productos">
+            <h2 onclick="toggleProductos('microcontroladores')">Microcontroladores</h2>
+            <div class="productos" id="microcontroladores">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="Microcontrolador ATmega328">
                     <h3>Microcontrolador ATmega328</h3>
                     <p>S/ 25.00</p>
                     <button onclick="agregarAlCarrito('Microcontrolador ATmega328', 25.00)">Agregar al carrito</button>
                 </div>
-                <!-- Agrega más microcontroladores aquí -->
-            </div>
+                </div>
         </div>
 
-        <!-- Sección de PICs e Integrados -->
         <div class="seccion">
-            <h2>PICs e Integrados</h2>
-            <div class="productos">
+            <h2 onclick="toggleProductos('pics')">PICs e Integrados</h2>
+            <div class="productos" id="pics">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="PIC16F877A">
                     <h3>PIC16F877A</h3>
                     <p>S/ 30.00</p>
                     <button onclick="agregarAlCarrito('PIC16F877A', 30.00)">Agregar al carrito</button>
                 </div>
-                <!-- Agrega más PICs e integrados aquí -->
-            </div>
+                </div>
         </div>
 
-        <!-- Sección de Componentes Electrónicos Faltantes -->
         <div class="seccion">
-            <h2>Componentes Electrónicos Faltantes</h2>
-            <div class="productos">
+            <h2 onclick="toggleProductos('componentes')">Componentes Electrónicos Faltantes</h2>
+            <div class="productos" id="componentes">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="Resistencia 1kΩ">
                     <h3>Resistencia 1kΩ</h3>
                     <p>S/ 0.50</p>
                     <button onclick="agregarAlCarrito('Resistencia 1kΩ', 0.50)">Agregar al carrito</button>
                 </div>
-                <!-- Agrega más componentes aquí -->
-            </div>
+                </div>
         </div>
 
         <div class="carrito">
@@ -250,15 +244,12 @@
         </div>
     </div>
 
-    <!-- Botón flotante de WhatsApp -->
     <button class="enviar-pedido" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
 
     <script>
-        // Variables para el carrito
         let carrito = [];
         let total = 0;
 
-        // Función para agregar productos al carrito
         function agregarAlCarrito(nombre, precio) {
             carrito.push({ nombre, precio });
             total += precio;
@@ -266,7 +257,6 @@
             alert(`Se está agregando ${nombre} al carrito.`);
         }
 
-        // Función para actualizar el carrito
         function actualizarCarrito() {
             const listaCarrito = document.getElementById('lista-carrito');
             const totalElement = document.getElementById('total');
@@ -282,14 +272,12 @@
             totalElement.textContent = total.toFixed(2);
         }
 
-        // Función para eliminar productos del carrito
         function eliminarDelCarrito(index) {
             total -= carrito[index].precio;
             carrito.splice(index, 1);
             actualizarCarrito();
         }
 
-        // Función para enviar el pedido por WhatsApp
         function enviarPedido() {
             if (carrito.length === 0) {
                 alert('El carrito está vacío.');
@@ -304,7 +292,6 @@
             window.open(url, '_blank');
         }
 
-        // Función para filtrar productos
         function filtrarProductos() {
             const busqueda = document.getElementById('busqueda').value.toLowerCase();
             const productos = document.querySelectorAll('.producto');
@@ -318,6 +305,13 @@
                 }
             });
         }
+
+        function toggleProductos(seccionId) {
+            const seccion = document.getElementById(seccionId);
+            seccion.style.display = seccion.style.display === 'flex' ? 'none' : 'flex';
+        }
     </script>
 </body>
 </html>
+
+        
