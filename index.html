@@ -181,6 +181,26 @@
         .enviar-pedido:hover {
             background: #004ecb;
         }
+
+        /* Estilos para "Producto no encontrado" */
+        #mensaje-no-encontrado {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ff5252;
+        }
+
+        #boton-menu-principal {
+            display: none;
+            background: #2979ff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -190,6 +210,9 @@
             <input type="text" id="busqueda" placeholder="Buscar componentes...">
             <button onclick="filtrarProductos()">Buscar</button>
         </div>
+
+        <div id="mensaje-no-encontrado">Producto no encontrado</div>
+        <button id="boton-menu-principal" onclick="mostrarMenuPrincipal()">Regresar al menú principal</button>
 
         <div class="seccion">
             <h2 onclick="toggleProductos('motores')">Motores</h2>
@@ -232,7 +255,7 @@
             <div class="productos" id="pics">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="PIC16F877A">
-                   <h3>PIC16F877A</h3>
+                    <h3>PIC16F877A</h3>
                     <p>S/ 30.00</p>
                     <button onclick="agregarAlCarrito('PIC16F877A', 30.00)">Agregar al carrito</button>
                 </div>
@@ -310,12 +333,14 @@
             const busqueda = document.getElementById('busqueda').value.toLowerCase();
             const productos = document.querySelectorAll('.producto');
             const secciones = document.querySelectorAll('.seccion .productos');
+            const mensajeNoEncontrado = document.getElementById('mensaje-no-encontrado');
+            const botonMenuPrincipal = document.getElementById('boton-menu-principal');
 
             secciones.forEach(seccion => {
-                seccion.style.display = 'none'; // Oculta todas las secciones
+                seccion.style.display = 'none';
             });
 
-            let resultadosEncontrados = false; // Variable para verificar si se encontraron resultados
+            let resultadosEncontrados = false;
 
             productos.forEach(producto => {
                 const nombre = producto.querySelector('h3').textContent.toLowerCase();
@@ -327,16 +352,36 @@
                 }
             });
 
-            if (!resultadosEncontrados) {
-                secciones.forEach(seccion => {
-                    seccion.style.display = 'flex'; // Muestra todas las secciones si no hay resultados
-                });
+            if (resultadosEncontrados) {
+                mensajeNoEncontrado.style.display = 'none';
+                botonMenuPrincipal.style.display = 'none';
+            } else {
+                mensajeNoEncontrado.style.display = 'block';
+                botonMenuPrincipal.style.display = 'block';
             }
         }
 
         function toggleProductos(seccionId) {
             const seccion = document.getElementById(seccionId);
             seccion.style.display = seccion.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function mostrarMenuPrincipal() {
+            const secciones = document.querySelectorAll('.seccion .productos');
+            const productos = document.querySelectorAll('.producto');
+            const mensajeNoEncontrado = document.getElementById('mensaje-no-encontrado');
+            const botonMenuPrincipal = document.getElementById('boton-menu-principal');
+
+            secciones.forEach(seccion => {
+                seccion.style.display = 'flex';
+            });
+
+            productos.forEach(producto => {
+                producto.style.display = 'block';
+            });
+
+            mensajeNoEncontrado.style.display = 'none';
+            botonMenuPrincipal.style.display = 'none';
         }
     </script>
 </body>
