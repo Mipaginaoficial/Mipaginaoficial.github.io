@@ -30,13 +30,25 @@
         /* Barra de búsqueda */
         .barra-busqueda {
             margin: 20px 0;
+            display: flex;
+            justify-content: center;
         }
 
         .barra-busqueda input {
             width: 300px;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 5px 0 0 5px;
             border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .barra-busqueda button {
+            background: #2979ff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0;
+            color: #fff;
+            cursor: pointer;
             font-size: 1rem;
         }
 
@@ -175,7 +187,8 @@
     <div class="container">
         <h1>Electrónica Piura</h1>
         <div class="barra-busqueda">
-            <input type="text" id="busqueda" placeholder="Buscar componentes..." oninput="filtrarProductos()">
+            <input type="text" id="busqueda" placeholder="Buscar componentes...">
+            <button onclick="filtrarProductos()">Buscar</button>
         </div>
 
         <div class="seccion">
@@ -219,14 +232,14 @@
             <div class="productos" id="pics">
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="PIC16F877A">
-                    <h3>PIC16F877A</h3>
+                   <h3>PIC16F877A</h3>
                     <p>S/ 30.00</p>
                     <button onclick="agregarAlCarrito('PIC16F877A', 30.00)">Agregar al carrito</button>
                 </div>
                 </div>
         </div>
 
-       <div class="seccion">
+        <div class="seccion">
             <h2 onclick="toggleProductos('componentes')">Componentes Electrónicos Faltantes</h2>
             <div class="productos" id="componentes">
                 <div class="producto">
@@ -296,15 +309,29 @@
         function filtrarProductos() {
             const busqueda = document.getElementById('busqueda').value.toLowerCase();
             const productos = document.querySelectorAll('.producto');
+            const secciones = document.querySelectorAll('.seccion .productos');
+
+            secciones.forEach(seccion => {
+                seccion.style.display = 'none'; // Oculta todas las secciones
+            });
+
+            let resultadosEncontrados = false; // Variable para verificar si se encontraron resultados
 
             productos.forEach(producto => {
                 const nombre = producto.querySelector('h3').textContent.toLowerCase();
                 if (nombre.includes(busqueda)) {
                     producto.style.display = 'block';
+                    resultadosEncontrados = true;
                 } else {
                     producto.style.display = 'none';
                 }
             });
+
+            if (!resultadosEncontrados) {
+                secciones.forEach(seccion => {
+                    seccion.style.display = 'flex'; // Muestra todas las secciones si no hay resultados
+                });
+            }
         }
 
         function toggleProductos(seccionId) {
