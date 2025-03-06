@@ -41,11 +41,27 @@
         }
 
         /* Estilos de la lista de productos */
+        .seccion {
+            margin-bottom: 40px;
+        }
+
+        .seccion h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
         .productos {
-            display: flex;
+            display: none;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .producto {
@@ -153,21 +169,6 @@
         .enviar-pedido:hover {
             background: #004ecb;
         }
-
-        /* Estilos para las secciones */
-        .seccion {
-            margin-bottom: 40px;
-        }
-
-        .seccion h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            cursor: pointer; /* Cambiar cursor a pointer */
-        }
-
-        .seccion .productos {
-            display: none; /* Ocultar productos inicialmente */
-        }
     </style>
 </head>
 <body>
@@ -225,7 +226,7 @@
                 </div>
         </div>
 
-        <div class="seccion">
+       <div class="seccion">
             <h2 onclick="toggleProductos('componentes')">Componentes Electrónicos Faltantes</h2>
             <div class="productos" id="componentes">
                 <div class="producto">
@@ -313,5 +314,3 @@
     </script>
 </body>
 </html>
-
-        
