@@ -190,8 +190,12 @@
             color: #ff5252;
         }
 
+        /* Botón flotante de regresar al menú principal */
         #boton-menu-principal {
             display: none;
+            position: fixed; /* Posición fija */
+            top: 20px; /* Distancia desde la parte superior */
+            right: 20px; /* Distancia desde la derecha */
             background: #2979ff;
             border: none;
             padding: 10px 20px;
@@ -199,7 +203,12 @@
             color: #fff;
             cursor: pointer;
             font-size: 1.2rem;
-            margin-top: 10px;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para mejor visibilidad */
+        }
+
+        #boton-menu-principal:hover {
+            background: #004ecb; /* Cambio de color al pasar el mouse */
         }
 
         /* Estilos responsivos */
