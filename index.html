@@ -128,59 +128,64 @@
         }
 
         /* Estilos del carrito */
-        .carrito {
-            position: fixed; /* Hace que el carrito sea flotante */
-            top: 10px; /* Distancia desde la parte superior */
-            left: 10px; /* Distancia desde la izquierda */
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            display: none; /* Inicialmente oculto */
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para mejor visibilidad */
-            max-width: 300px; /* Ancho máximo del carrito */
-        }
+.carrito {
+    position: fixed; /* Hace que el carrito sea flotante */
+    top: 10px; /* Distancia desde la parte superior */
+    left: 10px; /* Distancia desde la izquierda */
+    background: white; /* Fondo blanco */
+    border-radius: 10px;
+    padding: 15px; /* Reducir el padding para hacerlo más compacto */
+    display: none; /* Inicialmente oculto */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para mejor visibilidad */
+    max-width: 250px; /* Reducir el ancho máximo del carrito */
+    color: black; /* Letras negras */
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+    line-height: 1.4; /* Reducir la separación entre líneas */
+}
 
-        .carrito.visible {
-            display: block; /* Muestra el carrito cuando tiene productos */
-        }
+.carrito.visible {
+    display: block; /* Muestra el carrito cuando tiene productos */
+}
 
-        .carrito h2 {
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
+.carrito h2 {
+    font-size: 1rem; /* Tamaño del título */
+    margin-bottom: 15px; /* Reducir el margen inferior */
+}
 
-        .carrito ul {
-            list-style: none;
-            padding: 0;
-        }
+.carrito ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Eliminar el margen por defecto */
+}
 
-        .carrito li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
+.carrito li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0; /* Reducir el padding vertical */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borde más claro */
+}
 
-        .carrito button {
-            background: #ff5252;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-        }
+.carrito button {
+    background: #ff5252;
+    border: none;
+    padding: 4px 8px; /* Reducir el padding del botón */
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente del botón */
+}
 
-        .carrito button:hover {
-            background: #ff0000;
-        }
+.carrito button:hover {
+    background: #ff0000;
+}
 
-        .total {
-            font-size: 1rem;
-            margin-top: 20px;
-        }
-
+.total {
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente del total */
+    margin-top: 15px; /* Reducir el margen superior */
+    font-weight: bold; /* Opcional: resaltar el total */
+}
         .enviar-pedido {
             position: fixed;
             bottom: 20px;
