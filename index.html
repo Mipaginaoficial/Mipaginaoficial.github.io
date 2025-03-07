@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electrónica Piura</title>
     <style>
-
-         h5 {
+        h5 {
             font-family: 'Trebuchet MS', sans-serif; /* Fuente urbana */
             font-size: 0.8rem; /* Tamaño de la fuente */
             color: #FFFFFF; /* Color del texto */
@@ -130,10 +129,20 @@
 
         /* Estilos del carrito */
         .carrito {
-            margin-top: 40px;
+            position: fixed; /* Hace que el carrito sea flotante */
+            top: 20px; /* Distancia desde la parte superior */
+            left: 20px; /* Distancia desde la izquierda */
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
+            display: none; /* Inicialmente oculto */
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para mejor visibilidad */
+            max-width: 300px; /* Ancho máximo del carrito */
+        }
+
+        .carrito.visible {
+            display: block; /* Muestra el carrito cuando tiene productos */
         }
 
         .carrito h2 {
@@ -202,9 +211,9 @@
         /* Botón flotante de regresar al menú principal */
         #boton-menu-principal {
             display: none;
-            position: fixed; /* Posición fija */
-            top: 20px; /* Distancia desde la parte superior */
-            right: 20px; /* Distancia desde la derecha */
+            position: fixed;
+            top: 20px;
+            right: 20px;
             background: #2979ff;
             border: none;
             padding: 10px 20px;
@@ -212,12 +221,12 @@
             color: #fff;
             cursor: pointer;
             font-size: 1.2rem;
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para mejor visibilidad */
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         #boton-menu-principal:hover {
-            background: #004ecb; /* Cambio de color al pasar el mouse */
+            background: #004ecb;
         }
 
         /* Estilos responsivos */
@@ -233,23 +242,18 @@
     </style>
 </head>
 <body>
-
-
-
-    
-    
     <div class="container">
         <h1>Tienda de electronica</h1>
         <h4>"Tienda electronica virtual, 100% editable y adactable para tu negocio"</h4>
-<h5 style="font-family: 'Trebuchet MS', sans-serif;">(Esta tienda podría ser tuya, comprala o alquila los 3 meses de prueba)</h5>
+        <h5 style="font-family: 'Trebuchet MS', sans-serif;">(Esta tienda podría ser tuya, comprala o alquila los 3 meses de prueba)</h5>
    
         <div class="barra-busqueda">
             <input type="text" id="busqueda" placeholder="Buscar componentes...">
             <button onclick="filtrarProductos()">Buscar</button>
         </div>
         
-
         <div id="mensaje-no-encontrado">Producto no encontrado</div>
+        
         <div class="carrito">
             <h2>Carrito de compras</h2>
             <ul id="lista-carrito"></ul>
@@ -257,6 +261,7 @@
         </div>
         <button id="boton-menu-principal" onclick="mostrarMenuPrincipal()">Regresar al menú principal</button>
 
+        
         <div class="seccion">
             <h2 onclick="toggleProductos('motores')">servomotores y motores</h2>
             <div class="productos" id="motores">
@@ -1427,29 +1432,15 @@
     <button onclick="agregarAlCarrito('Kit de limpieza para soldadura', 10.00)">Agregar al carrito</button>
 </div>
 
-
-
-
-
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 
         
     </div>
 
     <button class="enviar-pedido" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
 
-    <script>
+<script>
         let carrito = [];
         let total = 0;
 
@@ -1463,6 +1454,8 @@
         function actualizarCarrito() {
             const listaCarrito = document.getElementById('lista-carrito');
             const totalElement = document.getElementById('total');
+            const carritoElement = document.querySelector('.carrito');
+
             listaCarrito.innerHTML = '';
             carrito.forEach((item, index) => {
                 const li = document.createElement('li');
@@ -1473,6 +1466,13 @@
                 listaCarrito.appendChild(li);
             });
             totalElement.textContent = total.toFixed(2);
+
+            // Mostrar u ocultar el carrito según si hay productos
+            if (carrito.length > 0) {
+                carritoElement.classList.add('visible');
+            } else {
+                carritoElement.classList.remove('visible');
+            }
         }
 
         function eliminarDelCarrito(index) {
