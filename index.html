@@ -119,29 +119,37 @@
             background: #009624;
         }
 
-        /* Estilos del carrito */
+        /* Estilos del carrito flotante */
         .carrito {
-            margin-top: 40px;
+            position: fixed; /* Posición fija */
+            top: 20px; /* Distancia desde la parte superior */
+            left: 20px; /* Distancia desde la izquierda */
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
+            width: 250px; /* Ancho del carrito */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
         }
 
         .carrito h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
         .carrito ul {
             list-style: none;
             padding: 0;
+            margin: 0;
+            max-height: 200px; /* Altura máxima para el listado */
+            overflow-y: auto; /* Scroll si hay muchos elementos */
         }
 
         .carrito li {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -152,6 +160,7 @@
             border-radius: 5px;
             color: #fff;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .carrito button:hover {
@@ -159,8 +168,8 @@
         }
 
         .total {
-            font-size: 1.5rem;
-            margin-top: 20px;
+            font-size: 1.2rem;
+            margin-top: 10px;
         }
 
         .enviar-pedido {
@@ -211,6 +220,16 @@
             background: #004ecb;
         }
 
+        /* Nueva sección para resultados de búsqueda */
+        #resultados-busqueda {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #resultados-busqueda .productos {
+            display: grid;
+        }
+
         /* Estilos responsivos */
         @media (max-width: 768px) {
             .productos {
@@ -220,16 +239,20 @@
             .producto {
                 width: 100%;
             }
-        }
 
-        /* Nueva sección para resultados de búsqueda */
-        #resultados-busqueda {
-            display: none;
-            margin-top: 20px;
-        }
+            .carrito {
+                width: 200px; /* Reducir el ancho en móviles */
+                top: 10px;
+                left: 10px;
+            }
 
-        #resultados-busqueda .productos {
-            display: grid;
+            .carrito h2 {
+                font-size: 1.2rem;
+            }
+
+            .carrito ul {
+                max-height: 150px; /* Reducir la altura en móviles */
+            }
         }
     </style>
 </head>
@@ -251,18 +274,20 @@
         </div>
 
         <div id="mensaje-no-encontrado">Producto no encontrado</div>
+
+        <!-- Carrito de compras flotante -->
         <div class="carrito">
-            <h2>Carrito de compras</h2>
+            <h2>Carrito 🛒</h2>
             <ul id="lista-carrito"></ul>
             <div class="total">Total: S/ <span id="total">0.00</span></div>
         </div>
+
         <button id="boton-menu-principal" onclick="mostrarMenuPrincipal()">Regresar al menú principal</button>
 
         <!-- Secciones de productos -->
         <div class="seccion">
             <h2 onclick="toggleProductos('motores')">Servomotores y motores</h2>
             <div class="productos" id="motores">
-                <!-- Productos de motores -->
                 <div class="producto">
     <img src="MOTOR5V_DC.jpg" alt="Motor DC 5V">
     <h3>Motor DC 5V</h3>
@@ -449,608 +474,12 @@
         <div class="seccion">
             <h2 onclick="toggleProductos('sensores')">Sensores</h2>
             <div class="productos" id="sensores">
-                <!-- Productos de sensores -->
-                <div class="producto">
-                    <img src="https://via.placeholder.com/150" alt="Sensor de temperatura LM35">
-                    <h3>Sensor de temperatura LM35</h3>
-                    <p>S/ 5.00</p>
-                    <button onclick="agregarAlCarrito('Sensor de temperatura LM35', 5.00)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Sensor de humedad DHT11">
-                <h3>Sensor de humedad DHT11</h3>
-                <p>S/ 10.00</p>
-                <button onclick="agregarAlCarrito('Sensor de humedad DHT11', 10.00)">Agregar al carrito</button>
-            </div>
-<div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Sensor ultrasónico HC-SR04">
-                <h3>Sensor ultrasónico HC-SR04</h3>
-                <p>S/ 12.00</p>
-                <button onclick="agregarAlCarrito('Sensor ultrasónico HC-SR04', 12.00)">Agregar al carrito</button>
-            </div>
-                <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Sensor de luz LDR">
-                <h3>Sensor de luz LDR</h3>
-                <p>S/ 2.50</p>
-                <button onclick="agregarAlCarrito('Sensor de luz LDR', 2.50)">Agregar al carrito</button>
-            </div>
-                            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de sonido">
-                <h3>Módulo sensor de sonido</h3>
-                <p>S/ 5.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de sonido', 5.00)">Agregar al carrito</button>
-            </div>
-                 <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de humo">
-                <h3>Módulo sensor de humo</h3>
-                <p>S/ 18.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de humo', 18.00)">Agregar al carrito</button>
-            </div>
-                 <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de vibración">
-                <h3>Módulo sensor de vibración</h3>
-                <p>S/ 6.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de vibración', 6.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de llama">
-                <h3>Módulo sensor de llama</h3>
-                <p>S/ 12.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de llama', 12.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de infrarrojo">
-                <h3>Módulo sensor de infrarrojo</h3>
-                <p>S/ 8.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de infrarrojo', 8.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de presión">
-                <h3>Módulo sensor de presión</h3>
-                <p>S/ 20.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de presión', 20.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de color">
-                <h3>Módulo sensor de color</h3>
-                <p>S/ 25.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de color', 25.00)">Agregar al carrito</button>
-            </div>
 
-                <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de proximidad">
-                <h3>Módulo sensor de proximidad</h3>
-                <p>S/ 10.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de proximidad', 10.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de inclinación">
-                <h3>Módulo sensor de inclinación</h3>
-                <p>S/ 5.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de inclinación', 5.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de movimiento PIR">
-                <h3>Módulo sensor de movimiento PIR</h3>
-                <p>S/ 12.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de movimiento PIR', 12.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de temperatura y humedad DHT22">
-                <h3>Módulo sensor de temperatura y humedad DHT22</h3>
-                <p>S/ 15.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de temperatura y humedad DHT22', 15.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de calidad del aire MQ-135">
-                <h3>Módulo sensor de calidad del aire MQ-135</h3>
-                <p>S/ 18.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de calidad del aire MQ-135', 18.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de corriente ACS712">
-                <h3>Módulo sensor de corriente ACS712</h3>
-                <p>S/ 22.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de corriente ACS712', 22.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de voltaje">
-                <h3>Módulo sensor de voltaje</h3>
-                <p>S/ 10.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de voltaje', 10.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de nivel de agua">
-                <h3>Módulo sensor de nivel de agua</h3>
-                <p>S/ 8.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de nivel de agua', 8.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de lluvia">
-                <h3>Módulo sensor de lluvia</h3>
-                <p>S/ 6.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de lluvia', 6.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de humedad del suelo">
-                <h3>Módulo sensor de humedad del suelo</h3>
-                <p>S/ 7.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de humedad del suelo', 7.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de velocidad del viento">
-                <h3>Módulo sensor de velocidad del viento</h3>
-                <p>S/ 25.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de velocidad del viento', 25.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de dirección del viento">
-                <h3>Módulo sensor de dirección del viento</h3>
-                <p>S/ 30.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de dirección del viento', 30.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de radiación UV">
-                <h3>Módulo sensor de radiación UV</h3>
-                <p>S/ 35.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de radiación UV', 35.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de CO2">
-                <h3>Módulo sensor de CO2</h3>
-                <p>S/ 40.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de CO2', 40.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de metano">
-                <h3>Módulo sensor de metano</h3>
-                <p>S/ 45.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de metano', 45.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de alcohol">
-                <h3>Módulo sensor de alcohol</h3>
-                <p>S/ 20.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de alcohol', 20.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de benceno">
-                <h3>Módulo sensor de benceno</h3>
-                <p>S/ 50.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de benceno', 50.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de amoníaco">
-                <h3>Módulo sensor de amoníaco</h3>
-                <p>S/ 55.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de amoníaco', 55.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de formaldehído">
-                <h3>Módulo sensor de formaldehído</h3>
-                <p>S/ 60.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de formaldehído', 60.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de tolueno">
-                <h3>Módulo sensor de tolueno</h3>
-                <p>S/ 65.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de tolueno', 65.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de xileno">
-                <h3>Módulo sensor de xileno</h3>
-                <p>S/ 70.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de xileno', 70.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de ozono">
-                <h3>Módulo sensor de ozono</h3>
-                <p>S/ 75.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de ozono', 75.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de hidrógeno">
-                <h3>Módulo sensor de hidrógeno</h3>
-                <p>S/ 80.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de hidrógeno', 80.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de sulfuro de hidrógeno">
-                <h3>Módulo sensor de sulfuro de hidrógeno</h3>
-                <p>S/ 85.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de sulfuro de hidrógeno', 85.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de cloro">
-                <h3>Módulo sensor de cloro</h3>
-                <p>S/ 90.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de cloro', 90.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de flúor">
-                <h3>Módulo sensor de flúor</h3>
-                <p>S/ 95.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de flúor', 95.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de mercurio">
-                <h3>Módulo sensor de mercurio</h3>
-                <p>S/ 100.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de mercurio', 100.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de plomo">
-                <h3>Módulo sensor de plomo</h3>
-                <p>S/ 105.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de plomo', 105.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de cadmio">
-                <h3>Módulo sensor de cadmio</h3>
-                <p>S/ 110.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de cadmio', 110.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de arsénico">
-                <h3>Módulo sensor de arsénico</h3>
-                <p>S/ 115.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de arsénico', 115.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de cromo">
-                <h3>Módulo sensor de cromo</h3>
-                <p>S/ 120.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de cromo', 120.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de níquel">
-                <h3>Módulo sensor de níquel</h3>
-                <p>S/ 125.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de níquel', 125.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de cobre">
-                <h3>Módulo sensor de cobre</h3>
-                <p>S/ 130.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de cobre', 130.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de zinc">
-                <h3>Módulo sensor de zinc</h3>
-                <p>S/ 135.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de zinc', 135.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de hierro">
-                <h3>Módulo sensor de hierro</h3>
-                <p>S/ 140.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de hierro', 140.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de manganeso">
-                <h3>Módulo sensor de manganeso</h3>
-                <p>S/ 145.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de manganeso', 145.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de plata">
-                <h3>Módulo sensor de plata</h3>
-                <p>S/ 150.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de plata', 150.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de oro">
-                <h3>Módulo sensor de oro</h3>
-                <p>S/ 155.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de oro', 155.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de platino">
-                <h3>Módulo sensor de platino</h3>
-                <p>S/ 160.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de platino', 160.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de paladio">
-                <h3>Módulo sensor de paladio</h3>
-                <p>S/ 165.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de paladio', 165.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de rodio">
-                <h3>Módulo sensor de rodio</h3>
-                <p>S/ 170.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de rodio', 170.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de iridio">
-                <h3>Módulo sensor de iridio</h3>
-                <p>S/ 175.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de iridio', 175.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de rutenio">
-                <h3>Módulo sensor de rutenio</h3>
-                <p>S/ 180.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de rutenio', 180.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de osmio">
-                <h3>Módulo sensor de osmio</h3>
-                <p>S/ 185.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de osmio', 185.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de renio">
-                <h3>Módulo sensor de renio</h3>
-                <p>S/ 190.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de renio', 190.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de hafnio">
-                <h3>Módulo sensor de hafnio</h3>
-                <p>S/ 195.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de hafnio', 195.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de tantalio">
-                <h3>Módulo sensor de tantalio</h3>
-                <p>S/ 200.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de tantalio', 200.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de wolframio">
-                <h3>Módulo sensor de wolframio</h3>
-                <p>S/ 205.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de wolframio', 205.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de molibdeno">
-                <h3>Módulo sensor de molibdeno</h3>
-                <p>S/ 210.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de molibdeno', 210.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de vanadio">
-                <h3>Módulo sensor de vanadio</h3>
-                <p>S/ 215.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de vanadio', 215.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de titanio">
-                <h3>Módulo sensor de titanio</h3>
-                <p>S/ 220.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de titanio', 220.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de circonio">
-                <h3>Módulo sensor de circonio</h3>
-                <p>S/ 225.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de circonio', 225.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de niobio">
-                <h3>Módulo sensor de niobio</h3>
-                <p>S/ 230.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de niobio', 230.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de bario">
-                <h3>Módulo sensor de bario</h3>
-                <p>S/ 235.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de bario', 235.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de estroncio">
-                <h3>Módulo sensor de estroncio</h3>
-                <p>S/ 240.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de estroncio', 240.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de rubidio">
-                <h3>Módulo sensor de rubidio</h3>
-                <p>S/ 245.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de rubidio', 245.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de cesio">
-                <h3>Módulo sensor de cesio</h3>
-                <p>S/ 250.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de cesio', 250.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de francio">
-                <h3>Módulo sensor de francio</h3>
-                <p>S/ 255.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de francio', 255.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de radio">
-                <h3>Módulo sensor de radio</h3>
-                <p>S/ 260.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de radio', 260.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de actinio">
-                <h3>Módulo sensor de actinio</h3>
-                <p>S/ 265.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de actinio', 265.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de torio">
-                <h3>Módulo sensor de torio</h3>
-                <p>S/ 270.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de torio', 270.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de protactinio">
-                <h3>Módulo sensor de protactinio</h3>
-                <p>S/ 275.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de protactinio', 275.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de uranio">
-                <h3>Módulo sensor de uranio</h3>
-                <p>S/ 280.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de uranio', 280.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de neptunio">
-                <h3>Módulo sensor de neptunio</h3>
-                <p>S/ 285.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de neptunio', 285.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de plutonio">
-                <h3>Módulo sensor de plutonio</h3>
-                <p>S/ 290.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de plutonio', 290.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de americio">
-                <h3>Módulo sensor de americio</h3>
-                <p>S/ 295.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de americio', 295.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de curio">
-                <h3>Módulo sensor de curio</h3>
-                <p>S/ 300.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de curio', 300.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de berkelio">
-                <h3>Módulo sensor de berkelio</h3>
-                <p>S/ 305.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de berkelio', 305.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de californio">
-                <h3>Módulo sensor de californio</h3>
-                <p>S/ 310.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de californio', 310.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de einstenio">
-                <h3>Módulo sensor de einstenio</h3>
-                <p>S/ 315.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de einstenio', 315.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de fermio">
-                <h3>Módulo sensor de fermio</h3>
-                <p>S/ 320.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de fermio', 320.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de mendelevio">
-                <h3>Módulo sensor de mendelevio</h3>
-                <p>S/ 325.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de mendelevio', 325.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de nobelio">
-                <h3>Módulo sensor de nobelio</h3>
-                <p>S/ 330.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de nobelio', 330.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de lawrencio">
-                <h3>Módulo sensor de lawrencio</h3>
-                <p>S/ 335.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de lawrencio', 335.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de rutherfordio">
-                <h3>Módulo sensor de rutherfordio</h3>
-                <p>S/ 340.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de rutherfordio', 340.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de dubnio">
-                <h3>Módulo sensor de dubnio</h3>
-                <p>S/ 345.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de dubnio', 345.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de seaborgio">
-                <h3>Módulo sensor de seaborgio</h3>
-                <p>S/ 350.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de seaborgio', 350.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de bohrio">
-                <h3>Módulo sensor de bohrio</h3>
-                <p>S/ 355.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de bohrio', 355.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de hassio">
-                <h3>Módulo sensor de hassio</h3>
-                <p>S/ 360.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de hassio', 360.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de meitnerio">
-                <h3>Módulo sensor de meitnerio</h3>
-                <p>S/ 365.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de meitnerio', 365.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de darmstadtio">
-                <h3>Módulo sensor de darmstadtio</h3>
-                <p>S/ 370.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de darmstadtio', 370.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de roentgenio">
-                <h3>Módulo sensor de roentgenio</h3>
-                <p>S/ 375.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de roentgenio', 375.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de copernicio">
-                <h3>Módulo sensor de copernicio</h3>
-                <p>S/ 380.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de copernicio', 380.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de nihonio">
-                <h3>Módulo sensor de nihonio</h3>
-                <p>S/ 385.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de nihonio', 385.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de flerovio">
-                <h3>Módulo sensor de flerovio</h3>
-                <p>S/ 390.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de flerovio', 390.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de moscovio">
-                <h3>Módulo sensor de moscovio</h3>
-                <p>S/ 395.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de moscovio', 395.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de livermorio">
-                <h3>Módulo sensor de livermorio</h3>
-                <p>S/ 400.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de livermorio', 400.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de teneso">
-                <h3>Módulo sensor de teneso</h3>
-                <p>S/ 405.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de teneso', 405.00)">Agregar al carrito</button>
-            </div>
-            <div class="producto">
-                <img src="https://via.placeholder.com/150" alt="Módulo sensor de oganesón">
-                <h3>Módulo sensor de oganesón</h3>
-                <p>S/ 410.00</p>
-                <button onclick="agregarAlCarrito('Módulo sensor de oganesón', 410.00)">Agregar al carrito</button>
-            </div>
+
+
+
+                
+                <!-- Productos de sensores -->
             </div>
         </div>
 
@@ -1058,66 +487,6 @@
             <h2 onclick="toggleProductos('microcontroladores')">Microcontroladores</h2>
             <div class="productos" id="microcontroladores">
                 <!-- Productos de microcontroladores -->
-                <div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador Arduino Uno">
-    <h3>Microcontrolador Arduino Uno</h3>
-    <p>S/ 50.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador Arduino Uno', 50.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador ESP8266">
-    <h3>Microcontrolador ESP8266</h3>
-    <p>S/ 30.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador ESP8266', 30.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador ESP32">
-    <h3>Microcontrolador ESP32</h3>
-    <p>S/ 40.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador ESP32', 40.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador Raspberry Pi Pico">
-    <h3>Microcontrolador Raspberry Pi Pico</h3>
-    <p>S/ 35.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador Raspberry Pi Pico', 35.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador STM32">
-    <h3>Microcontrolador STM32</h3>
-    <p>S/ 45.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador STM32', 45.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC16F877A">
-    <h3>Microcontrolador PIC16F877A</h3>
-    <p>S/ 25.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC16F877A', 25.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador ATmega328P">
-    <h3>Microcontrolador ATmega328P</h3>
-    <p>S/ 20.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador ATmega328P', 20.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador Teensy 4.0">
-    <h3>Microcontrolador Teensy 4.0</h3>
-    <p>S/ 60.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador Teensy 4.0', 60.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador NodeMCU">
-    <h3>Microcontrolador NodeMCU</h3>
-    <p>S/ 28.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador NodeMCU', 28.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador MSP430">
-    <h3>Microcontrolador MSP430</h3>
-    <p>S/ 22.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador MSP430', 22.00)">Agregar al carrito</button>
-</div>
             </div>
         </div>
 
@@ -1125,90 +494,6 @@
             <h2 onclick="toggleProductos('pics')">PICs e Integrados</h2>
             <div class="productos" id="pics">
                 <!-- Productos de PICs e Integrados -->
-                <div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC16F84A">
-    <h3>Microcontrolador PIC16F84A</h3>
-    <p>S/ 15.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC16F84A', 15.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC18F4550">
-    <h3>Microcontrolador PIC18F4550</h3>
-    <p>S/ 20.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC18F4550', 20.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC12F683">
-    <h3>Microcontrolador PIC12F683</h3>
-    <p>S/ 10.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC12F683', 10.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC32MX">
-    <h3>Microcontrolador PIC32MX</h3>
-    <p>S/ 35.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC32MX', 35.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado 555 Timer">
-    <h3>Integrado 555 Timer</h3>
-    <p>S/ 5.00</p>
-    <button onclick="agregarAlCarrito('Integrado 555 Timer', 5.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado LM7805 (Regulador de voltaje)">
-    <h3>Integrado LM7805 (Regulador de voltaje)</h3>
-    <p>S/ 3.00</p>
-    <button onclick="agregarAlCarrito('Integrado LM7805 (Regulador de voltaje)', 3.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado LM317 (Regulador de voltaje ajustable)">
-    <h3>Integrado LM317 (Regulador de voltaje ajustable)</h3>
-    <p>S/ 4.00</p>
-    <button onclick="agregarAlCarrito('Integrado LM317 (Regulador de voltaje ajustable)', 4.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado LM358 (Amplificador operacional)">
-    <h3>Integrado LM358 (Amplificador operacional)</h3>
-    <p>S/ 2.50</p>
-    <button onclick="agregarAlCarrito('Integrado LM358 (Amplificador operacional)', 2.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado ULN2003 (Driver para motores)">
-    <h3>Integrado ULN2003 (Driver para motores)</h3>
-    <p>S/ 6.00</p>
-    <button onclick="agregarAlCarrito('Integrado ULN2003 (Driver para motores)', 6.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado CD4017 (Contador decimal)">
-    <h3>Integrado CD4017 (Contador decimal)</h3>
-    <p>S/ 3.50</p>
-    <button onclick="agregarAlCarrito('Integrado CD4017 (Contador decimal)', 3.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado NE555 (Timer)">
-    <h3>Integrado NE555 (Timer)</h3>
-    <p>S/ 4.50</p>
-    <button onclick="agregarAlCarrito('Integrado NE555 (Timer)', 4.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado MAX232 (Conversor de nivel RS232)">
-    <h3>Integrado MAX232 (Conversor de nivel RS232)</h3>
-    <p>S/ 7.00</p>
-    <button onclick="agregarAlCarrito('Integrado MAX232 (Conversor de nivel RS232)', 7.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado L298N (Driver de puente H)">
-    <h3>Integrado L298N (Driver de puente H)</h3>
-    <p>S/ 12.00</p>
-    <button onclick="agregarAlCarrito('Integrado L298N (Driver de puente H)', 12.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado 74HC595 (Registro de desplazamiento)">
-    <h3>Integrado 74HC595 (Registro de desplazamiento)</h3>
-    <p>S/ 5.00</p>
-    <button onclick="agregarAlCarrito('Integrado 74HC595 (Registro de desplazamiento)', 5.00)">Agregar al carrito</button>
-</div>
             </div>
         </div>
 
@@ -1216,186 +501,6 @@
             <h2 onclick="toggleProductos('componentes')">Componentes y accesorios</h2>
             <div class="productos" id="componentes">
                 <!-- Productos de componentes y accesorios -->
-                 <div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Resistencia 1/4W 220 Ohm">
-    <h3>Resistencia 1/4W 220 Ohm</h3>
-    <p>S/ 0.10</p>
-    <button onclick="agregarAlCarrito('Resistencia 1/4W 220 Ohm', 0.10)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Capacitor electrolítico 1000uF 25V">
-    <h3>Capacitor electrolítico 1000uF 25V</h3>
-    <p>S/ 1.50</p>
-    <button onclick="agregarAlCarrito('Capacitor electrolítico 1000uF 25V', 1.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Transistor NPN 2N2222">
-    <h3>Transistor NPN 2N2222</h3>
-    <p>S/ 0.50</p>
-    <button onclick="agregarAlCarrito('Transistor NPN 2N2222', 0.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Diodo 1N4007">
-    <h3>Diodo 1N4007</h3>
-    <p>S/ 0.20</p>
-    <button onclick="agregarAlCarrito('Diodo 1N4007', 0.20)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="LED rojo 5mm">
-    <h3>LED rojo 5mm</h3>
-    <p>S/ 0.30</p>
-    <button onclick="agregarAlCarrito('LED rojo 5mm', 0.30)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Potenciómetro 10K Ohm">
-    <h3>Potenciómetro 10K Ohm</h3>
-    <p>S/ 1.00</p>
-    <button onclick="agregarAlCarrito('Potenciómetro 10K Ohm', 1.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Estaño para soldar 60/40">
-    <h3>Estaño para soldar 60/40</h3>
-    <p>S/ 8.00</p>
-    <button onclick="agregarAlCarrito('Estaño para soldar 60/40', 8.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Pasta de soldar">
-    <h3>Pasta de soldar</h3>
-    <p>S/ 5.00</p>
-    <button onclick="agregarAlCarrito('Pasta de soldar', 5.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Cautín de 30W">
-    <h3>Cautín de 30W</h3>
-    <p>S/ 25.00</p>
-    <button onclick="agregarAlCarrito('Cautín de 30W', 25.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Protoboard 830 puntos">
-    <h3>Protoboard 830 puntos</h3>
-    <p>S/ 10.00</p>
-    <button onclick="agregarAlCarrito('Protoboard 830 puntos', 10.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Cables jumper macho-macho">
-    <h3>Cables jumper macho-macho</h3>
-    <p>S/ 3.00</p>
-    <button onclick="agregarAlCarrito('Cables jumper macho-macho', 3.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Cables jumper macho-hembra">
-    <h3>Cables jumper macho-hembra</h3>
-    <p>S/ 3.50</p>
-    <button onclick="agregarAlCarrito('Cables jumper macho-hembra', 3.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Cables jumper hembra-hembra">
-    <h3>Cables jumper hembra-hembra</h3>
-    <p>S/ 3.50</p>
-    <button onclick="agregarAlCarrito('Cables jumper hembra-hembra', 3.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Fuente de poder 12V 1A">
-    <h3>Fuente de poder 12V 1A</h3>
-    <p>S/ 15.00</p>
-    <button onclick="agregarAlCarrito('Fuente de poder 12V 1A', 15.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Batería 9V">
-    <h3>Batería 9V</h3>
-    <p>S/ 5.00</p>
-    <button onclick="agregarAlCarrito('Batería 9V', 5.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Interruptor deslizante">
-    <h3>Interruptor deslizante</h3>
-    <p>S/ 2.00</p>
-    <button onclick="agregarAlCarrito('Interruptor deslizante', 2.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Relé 5V">
-    <h3>Relé 5V</h3>
-    <p>S/ 4.00</p>
-    <button onclick="agregarAlCarrito('Relé 5V', 4.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Sensor de temperatura LM35">
-    <h3>Sensor de temperatura LM35</h3>
-    <p>S/ 6.00</p>
-    <button onclick="agregarAlCarrito('Sensor de temperatura LM35', 6.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Display LCD 16x2">
-    <h3>Display LCD 16x2</h3>
-    <p>S/ 12.00</p>
-    <button onclick="agregarAlCarrito('Display LCD 16x2', 12.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Motor DC 5V">
-    <h3>Motor DC 5V</h3>
-    <p>S/ 8.00</p>
-    <button onclick="agregarAlCarrito('Motor DC 5V', 8.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Servomotor SG90">
-    <h3>Servomotor SG90</h3>
-    <p>S/ 10.00</p>
-    <button onclick="agregarAlCarrito('Servomotor SG90', 10.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Zumbador pasivo">
-    <h3>Zumbador pasivo</h3>
-    <p>S/ 2.50</p>
-    <button onclick="agregarAlCarrito('Zumbador pasivo', 2.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Fusible 1A">
-    <h3>Fusible 1A</h3>
-    <p>S/ 1.00</p>
-    <button onclick="agregarAlCarrito('Fusible 1A', 1.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Regleta de terminales">
-    <h3>Regleta de terminales</h3>
-    <p>S/ 3.00</p>
-    <button onclick="agregarAlCarrito('Regleta de terminales', 3.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Cinta aislante">
-    <h3>Cinta aislante</h3>
-    <p>S/ 2.00</p>
-    <button onclick="agregarAlCarrito('Cinta aislante', 2.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Multímetro digital">
-    <h3>Multímetro digital</h3>
-    <p>S/ 50.00</p>
-    <button onclick="agregarAlCarrito('Multímetro digital', 50.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Pinzas de corte">
-    <h3>Pinzas de corte</h3>
-    <p>S/ 12.00</p>
-    <button onclick="agregarAlCarrito('Pinzas de corte', 12.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Destornillador de precisión">
-    <h3>Destornillador de precisión</h3>
-    <p>S/ 8.00</p>
-    <button onclick="agregarAlCarrito('Destornillador de precisión', 8.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Tubo termorretráctil">
-    <h3>Tubo termorretráctil</h3>
-    <p>S/ 4.00</p>
-    <button onclick="agregarAlCarrito('Tubo termorretráctil', 4.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Kit de limpieza para soldadura">
-    <h3>Kit de limpieza para soldadura</h3>
-    <p>S/ 10.00</p>
-    <button onclick="agregarAlCarrito('Kit de limpieza para soldadura', 10.00)">Agregar al carrito</button>
-</div>
             </div>
         </div>
     </div>
