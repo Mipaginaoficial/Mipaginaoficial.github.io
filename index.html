@@ -119,146 +119,62 @@
             background: #009624;
         }
 
-/* Estilos del carrito flotante */
-.carrito {
-    position: fixed; /* Posición fija */
-    top: 10px; /* Distancia desde la parte superior */
-    left: 20px; /* Distancia desde la izquierda */
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px; /* Reducir el padding para menos altura */
-    width: 300px; /* Aumentar el ancho */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-}
-
-.carrito h2 {
-    font-size: 1.2rem; /* Reducir el tamaño de la fuente del título */
-    margin-bottom: 8px; /* Reducir el margen inferior */
-}
-
-.carrito ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 120px; /* Reducir la altura máxima del listado */
-    overflow-y: auto; /* Scroll si hay muchos elementos */
-}
-
-.carrito li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0; /* Reducir el padding vertical */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
-}
-
-.carrito button {
-    background: #ff5252;
-    border: none;
-    padding: 4px 8px; /* Reducir el padding del botón */
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 0.8rem; /* Reducir el tamaño de la fuente del botón */
-}
-
-.carrito button:hover {
-    background: #ff0000;
-}
-
-.total {
-    font-size: 1rem; /* Reducir el tamaño de la fuente del total */
-    margin-top: 8px; /* Reducir el margen superior */
-}
-
-
-
-
-        
-        .enviar-pedido {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #2979ff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: background 0.3s ease;
-            z-index: 1000;
-        }
-
-        .enviar-pedido:hover {
-            background: #004ecb;
-        }
-
-        /* Estilos para "Producto no encontrado" */
-        #mensaje-no-encontrado {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.5rem;
-            color: #ff5252;
-        }
-
-        /* Botón flotante de regresar al menú principal */
-        #boton-menu-principal {
-            display: none;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2979ff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 1.2rem;
-            z-index: 1000;
+        /* Estilos del carrito flotante */
+        .carrito {
+            position: fixed; /* Posición fija */
+            top: 10px; /* Distancia desde la parte superior */
+            left: 20px; /* Distancia desde la izquierda */
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px; /* Reducir el padding para menos altura */
+            width: 300px; /* Aumentar el ancho */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            display: none; /* Ocultar el carrito al inicio */
         }
 
-        #boton-menu-principal:hover {
-            background: #004ecb;
+        .carrito h2 {
+            font-size: 1.2rem; /* Reducir el tamaño de la fuente del título */
+            margin-bottom: 8px; /* Reducir el margen inferior */
         }
 
-        /* Nueva sección para resultados de búsqueda */
-        #resultados-busqueda {
-            display: none;
-            margin-top: 20px;
+        .carrito ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 120px; /* Reducir la altura máxima del listado */
+            overflow-y: auto; /* Scroll si hay muchos elementos */
         }
 
-        #resultados-busqueda .productos {
-            display: grid;
+        .carrito li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0; /* Reducir el padding vertical */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem; /* Reducir el tamaño de la fuente */
         }
 
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            .productos {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .producto {
-                width: 100%;
-            }
-
-            .carrito {
-                width: 200px; /* Reducir el ancho en móviles */
-                top: 10px;
-                left: 10px;
-            }
-
-            .carrito h2 {
-                font-size: 1.2rem;
-            }
-
-            .carrito ul {
-                max-height: 150px; /* Reducir la altura en móviles */
-            }
+        .carrito button {
+            background: #ff5252;
+            border: none;
+            padding: 4px 8px; /* Reducir el padding del botón */
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.8rem; /* Reducir el tamaño de la fuente del botón */
         }
+
+        .carrito button:hover {
+            background: #ff0000;
+        }
+
+        .total {
+            font-size: 1rem; /* Reducir el tamaño de la fuente del total */
+            margin-top: 8px; /* Reducir el margen superior */
+        }
+
+        /* Resto del CSS... */
     </style>
 </head>
 <body>
@@ -281,7 +197,7 @@
         <div id="mensaje-no-encontrado">Producto no encontrado</div>
 
         <!-- Carrito de compras flotante -->
-        <div class="carrito">
+        <div class="carrito" id="carrito">
             <h2>Carrito 🛒</h2>
             <ul id="lista-carrito"></ul>
             <div class="total">Total: S/ <span id="total">0.00</span></div>
@@ -293,7 +209,7 @@
         <div class="seccion">
             <h2 onclick="toggleProductos('motores')">Servomotores y motores</h2>
             <div class="productos" id="motores">
-                <div class="producto">
+               <div class="producto">
     <img src="MOTOR5V_DC.jpg" alt="Motor DC 5V">
     <h3>Motor DC 5V</h3>
     <p>S/ 10.00</p>
@@ -473,17 +389,19 @@
     <p>S/ 47.00</p>
     <button onclick="agregarAlCarrito('Servomotor TowerPro MG105R', 47.00)">Agregar al carrito</button>
 </div>
+            
             </div>
         </div>
+
+
+
+
+
+
 
         <div class="seccion">
             <h2 onclick="toggleProductos('sensores')">Sensores</h2>
             <div class="productos" id="sensores">
-
-
-
-
-                
                 <div class="producto">
                     <img src="https://via.placeholder.com/150" alt="Sensor de temperatura LM35">
                     <h3>Sensor de temperatura LM35</h3>
@@ -1085,13 +1003,36 @@
                 <p>S/ 410.00</p>
                 <button onclick="agregarAlCarrito('Módulo sensor de oganesón', 410.00)">Agregar al carrito</button>
             </div>
+
+
+                
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
 
         <div class="seccion">
             <h2 onclick="toggleProductos('microcontroladores')">Microcontroladores</h2>
             <div class="productos" id="microcontroladores">
+
+
+
+
                 <div class="producto">
+    <img src="https://via.placeholder.com/150" alt="Microcontrolador Arduino Uno">
+    <h3>Microcontrolador Arduino Uno</h3>
+    <p>S/ 50.00</p>
+    <button onclick="agregarAlCarrito('Microcontrolador Arduino Uno', 50.00)">Agregar al carrito</button>
+</div>
+<div class="producto">
     <img src="https://via.placeholder.com/150" alt="Microcontrolador ESP8266">
     <h3>Microcontrolador ESP8266</h3>
     <p>S/ 30.00</p>
@@ -1238,165 +1179,27 @@
             </div>
         </div>
 
-        <div class="seccion">
-            <h2 onclick="toggleProductos('pics')">PICs e Integrados</h2>
-            <div class="productos" id="pics">
-                <div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador ESP8266">
-    <h3>Microcontrolador ESP8266</h3>
-    <p>S/ 30.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador ESP8266', 30.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador ESP32">
-    <h3>Microcontrolador ESP32</h3>
-    <p>S/ 40.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador ESP32', 40.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador Raspberry Pi Pico">
-    <h3>Microcontrolador Raspberry Pi Pico</h3>
-    <p>S/ 35.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador Raspberry Pi Pico', 35.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador STM32">
-    <h3>Microcontrolador STM32</h3>
-    <p>S/ 45.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador STM32', 45.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC16F877A">
-    <h3>Microcontrolador PIC16F877A</h3>
-    <p>S/ 25.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC16F877A', 25.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador ATmega328P">
-    <h3>Microcontrolador ATmega328P</h3>
-    <p>S/ 20.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador ATmega328P', 20.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador Teensy 4.0">
-    <h3>Microcontrolador Teensy 4.0</h3>
-    <p>S/ 60.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador Teensy 4.0', 60.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador NodeMCU">
-    <h3>Microcontrolador NodeMCU</h3>
-    <p>S/ 28.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador NodeMCU', 28.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador MSP430">
-    <h3>Microcontrolador MSP430</h3>
-    <p>S/ 22.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador MSP430', 22.00)">Agregar al carrito</button>
-</div>
-            </div>
-        </div>
 
-        <div class="seccion">
-            <h2 onclick="toggleProductos('pics')">PICs e Integrados</h2>
-            <div class="productos" id="pics">
-                <div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC16F84A">
-    <h3>Microcontrolador PIC16F84A</h3>
-    <p>S/ 15.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC16F84A', 15.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC18F4550">
-    <h3>Microcontrolador PIC18F4550</h3>
-    <p>S/ 20.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC18F4550', 20.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC12F683">
-    <h3>Microcontrolador PIC12F683</h3>
-    <p>S/ 10.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC12F683', 10.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Microcontrolador PIC32MX">
-    <h3>Microcontrolador PIC32MX</h3>
-    <p>S/ 35.00</p>
-    <button onclick="agregarAlCarrito('Microcontrolador PIC32MX', 35.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado 555 Timer">
-    <h3>Integrado 555 Timer</h3>
-    <p>S/ 5.00</p>
-    <button onclick="agregarAlCarrito('Integrado 555 Timer', 5.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado LM7805 (Regulador de voltaje)">
-    <h3>Integrado LM7805 (Regulador de voltaje)</h3>
-    <p>S/ 3.00</p>
-    <button onclick="agregarAlCarrito('Integrado LM7805 (Regulador de voltaje)', 3.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado LM317 (Regulador de voltaje ajustable)">
-    <h3>Integrado LM317 (Regulador de voltaje ajustable)</h3>
-    <p>S/ 4.00</p>
-    <button onclick="agregarAlCarrito('Integrado LM317 (Regulador de voltaje ajustable)', 4.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado LM358 (Amplificador operacional)">
-    <h3>Integrado LM358 (Amplificador operacional)</h3>
-    <p>S/ 2.50</p>
-    <button onclick="agregarAlCarrito('Integrado LM358 (Amplificador operacional)', 2.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado ULN2003 (Driver para motores)">
-    <h3>Integrado ULN2003 (Driver para motores)</h3>
-    <p>S/ 6.00</p>
-    <button onclick="agregarAlCarrito('Integrado ULN2003 (Driver para motores)', 6.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado CD4017 (Contador decimal)">
-    <h3>Integrado CD4017 (Contador decimal)</h3>
-    <p>S/ 3.50</p>
-    <button onclick="agregarAlCarrito('Integrado CD4017 (Contador decimal)', 3.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado NE555 (Timer)">
-    <h3>Integrado NE555 (Timer)</h3>
-    <p>S/ 4.50</p>
-    <button onclick="agregarAlCarrito('Integrado NE555 (Timer)', 4.50)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado MAX232 (Conversor de nivel RS232)">
-    <h3>Integrado MAX232 (Conversor de nivel RS232)</h3>
-    <p>S/ 7.00</p>
-    <button onclick="agregarAlCarrito('Integrado MAX232 (Conversor de nivel RS232)', 7.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado L298N (Driver de puente H)">
-    <h3>Integrado L298N (Driver de puente H)</h3>
-    <p>S/ 12.00</p>
-    <button onclick="agregarAlCarrito('Integrado L298N (Driver de puente H)', 12.00)">Agregar al carrito</button>
-</div>
-<div class="producto">
-    <img src="https://via.placeholder.com/150" alt="Integrado 74HC595 (Registro de desplazamiento)">
-    <h3>Integrado 74HC595 (Registro de desplazamiento)</h3>
-    <p>S/ 5.00</p>
-    <button onclick="agregarAlCarrito('Integrado 74HC595 (Registro de desplazamiento)', 5.00)">Agregar al carrito</button>
-</div>
-            </div>
-        </div>
+
+
+
+
+
 
         <div class="seccion">
             <h2 onclick="toggleProductos('componentes')">Componentes y accesorios</h2>
             <div class="productos" id="componentes">
-                 <div class="producto">
+                <div class="producto">
     <img src="https://via.placeholder.com/150" alt="Resistencia 1/4W 220 Ohm">
     <h3>Resistencia 1/4W 220 Ohm</h3>
     <p>S/ 0.10</p>
     <button onclick="agregarAlCarrito('Resistencia 1/4W 220 Ohm', 0.10)">Agregar al carrito</button>
 </div>
+
+
+
+
+
 <div class="producto">
     <img src="https://via.placeholder.com/150" alt="Capacitor electrolítico 1000uF 25V">
     <h3>Capacitor electrolítico 1000uF 25V</h3>
@@ -1571,9 +1374,14 @@
     <p>S/ 10.00</p>
     <button onclick="agregarAlCarrito('Kit de limpieza para soldadura', 10.00)">Agregar al carrito</button>
 </div>
+
+
             </div>
         </div>
+
+
     </div>
+
 
     <button class="enviar-pedido" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
 
@@ -1585,6 +1393,7 @@
             carrito.push({ nombre, precio });
             total += precio;
             actualizarCarrito();
+            mostrarCarrito(); // Mostrar el carrito cuando se agrega un producto
             alert(`Se está agregando ${nombre} al carrito.`);
         }
 
@@ -1607,6 +1416,19 @@
             total -= carrito[index].precio;
             carrito.splice(index, 1);
             actualizarCarrito();
+            if (carrito.length === 0) {
+                ocultarCarrito(); // Ocultar el carrito si está vacío
+            }
+        }
+
+        function mostrarCarrito() {
+            const carritoElement = document.getElementById('carrito');
+            carritoElement.style.display = 'block'; // Mostrar el carrito
+        }
+
+        function ocultarCarrito() {
+            const carritoElement = document.getElementById('carrito');
+            carritoElement.style.display = 'none'; // Ocultar el carrito
         }
 
         function enviarPedido() {
