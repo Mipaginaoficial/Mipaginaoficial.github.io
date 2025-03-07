@@ -119,59 +119,64 @@
             background: #009624;
         }
 
-        /* Estilos del carrito flotante */
-        .carrito {
-            position: fixed; /* Posición fija */
-            top: 10px; /* Distancia desde la parte superior */
-            left: 20px; /* Distancia desde la izquierda */
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            width: 150px; /* Ancho del carrito */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-        }
+/* Estilos del carrito flotante */
+.carrito {
+    position: fixed; /* Posición fija */
+    top: 10px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px; /* Reducir el padding para menos altura */
+    width: 300px; /* Aumentar el ancho */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
 
-        .carrito h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
+.carrito h2 {
+    font-size: 1.2rem; /* Reducir el tamaño de la fuente del título */
+    margin-bottom: 8px; /* Reducir el margen inferior */
+}
 
-        .carrito ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 200px; /* Altura máxima para el listado */
-            overflow-y: auto; /* Scroll si hay muchos elementos */
-        }
+.carrito ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 120px; /* Reducir la altura máxima del listado */
+    overflow-y: auto; /* Scroll si hay muchos elementos */
+}
 
-        .carrito li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
+.carrito li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0; /* Reducir el padding vertical */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+}
 
-        .carrito button {
-            background: #ff5252;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
+.carrito button {
+    background: #ff5252;
+    border: none;
+    padding: 4px 8px; /* Reducir el padding del botón */
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente del botón */
+}
 
-        .carrito button:hover {
-            background: #ff0000;
-        }
+.carrito button:hover {
+    background: #ff0000;
+}
 
-        .total {
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
+.total {
+    font-size: 1rem; /* Reducir el tamaño de la fuente del total */
+    margin-top: 8px; /* Reducir el margen superior */
+}
 
+
+
+
+        
         .enviar-pedido {
             position: fixed;
             bottom: 20px;
