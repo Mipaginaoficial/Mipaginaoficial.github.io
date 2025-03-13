@@ -70,10 +70,11 @@
       display: flex;
       justify-content: center;
       margin-top: 10px;
+      flex-wrap: wrap; /* Para que los enlaces se ajusten en móviles */
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 10px 15px; /* Más espacio entre elementos en móviles */
     }
 
     nav ul li a {
@@ -84,7 +85,7 @@
 
     /* Hero Section */
     .hero {
-      height: 400px;
+      height: 100vh; /* Ocupa toda la pantalla inicial */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -126,21 +127,27 @@
       color: #00ffcc;
     }
 
-    .proyectos-grid, .servicios-grid, .blog-grid {
+    .proyectos-grid, .servicios-grid {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
     }
 
-    .proyecto, .servicio, .articulo {
+    .proyecto, .servicio {
       background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
       padding: 20px;
       border-radius: 10px;
-      width: 30%;
-      margin: 10px;
+      width: 100%; /* Ocupa todo el ancho en móviles */
+      margin: 10px 0; /* Espaciado vertical */
     }
 
-    .proyecto h3, .servicio h3, .articulo h3 {
+    @media (min-width: 768px) {
+      .proyecto, .servicio {
+        width: 45%; /* Dos columnas en laptops */
+      }
+    }
+
+    .proyecto h3, .servicio h3 {
       color: #00ffcc;
     }
 
@@ -152,7 +159,8 @@
     }
 
     form input, form textarea {
-      width: 80%;
+      width: 100%;
+      max-width: 400px; /* Ancho máximo para laptops */
       padding: 10px;
       margin: 10px 0;
       border: 1px solid #00ffcc;
@@ -181,6 +189,11 @@
       text-decoration: none;
       border-radius: 5px;
       z-index: 2; /* Asegura que esté por encima del contenido */
+      display: none; /* Oculto por defecto */
+    }
+
+    .btn-regresar.visible {
+      display: block; /* Visible cuando se añade la clase "visible" */
     }
 
     .btn-regresar:hover {
@@ -264,7 +277,6 @@
       </div>
       <!-- Puedes agregar más proyectos aquí -->
     </div>
-    <a href="#inicio" class="btn-regresar">Regresar al Menú</a>
   </section>
 
   <!-- Sección Servicios -->
@@ -284,7 +296,6 @@
         <p>Soporte y actualizaciones para tu página web.</p>
       </div>
     </div>
-    <a href="#inicio" class="btn-regresar">Regresar al Menú</a>
   </section>
 
   <!-- Sección Contacto -->
@@ -299,7 +310,6 @@
     </form>
     <a href="https://wa.me/51926173350" class="btn-whatsapp" target="_blank">Escríbeme por WhatsApp</a>
     <p>O envíame un correo a: <a href="mailto:zapataaquinofernandojose@gmail.com" style="color: #00ffcc;">zapataaquinofernandojose@gmail.com</a></p>
-    <a href="#inicio" class="btn-regresar">Regresar al Menú</a>
   </section>
 
   <!-- Footer -->
@@ -310,6 +320,9 @@
     </div>
     <p>&copy; 2024 TECHNOLOGY2.0. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Botón de regresar al menú principal -->
+  <a href="#inicio" class="btn-regresar">Regresar al Menú</a>
 
   <!-- JavaScript para las estrellas -->
   <script>
@@ -325,6 +338,27 @@
       star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Velocidad aleatoria
       starsContainer.appendChild(star);
     }
+  </script>
+
+  <!-- JavaScript para el botón de regresar -->
+  <script>
+    const btnRegresar = document.querySelector('.btn-regresar');
+
+    // Mostrar u ocultar el botón al hacer scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        btnRegresar.classList.add('visible');
+      } else {
+        btnRegresar.classList.remove('visible');
+      }
+    });
+
+    // Mostrar el botón al hacer clic en un enlace de navegación
+    document.querySelectorAll('nav ul li a').forEach(enlace => {
+      enlace.addEventListener('click', () => {
+        btnRegresar.classList.add('visible');
+      });
+    });
   </script>
 
   <!-- JavaScript para el formulario -->
