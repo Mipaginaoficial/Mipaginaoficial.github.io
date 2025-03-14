@@ -7,10 +7,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
             text-align: center;
             padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff6f61;
         }
 
         .container {
@@ -22,28 +27,42 @@
         .ingredients, .decorations, .cake-area {
             width: 30%;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            border: 2px solid #ff6f61;
+            border-radius: 15px;
             background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .ingredient, .decoration {
-            padding: 10px;
-            margin: 5px;
-            background-color: #ffcc00;
-            border-radius: 5px;
+            margin: 10px;
             cursor: grab;
+            transition: transform 0.2s;
+        }
+
+        .ingredient:hover, .decoration:hover {
+            transform: scale(1.1);
+        }
+
+        .ingredient img, .decoration img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            border: 2px solid #ffcc00;
         }
 
         .cake {
-            min-height: 200px;
-            border: 2px dashed #ccc;
+            min-height: 300px;
+            border: 2px dashed #ff6f61;
             margin-top: 10px;
-            background-color: #f9f9f9;
+            background-color: #fff3e0;
+            border-radius: 15px;
+            padding: 10px;
         }
 
         .total {
             margin-top: 20px;
+            font-size: 1.5rem;
+            color: #333;
         }
 
         button {
@@ -53,6 +72,8 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
 
         button:hover {
@@ -65,15 +86,27 @@
     <div class="container">
         <div class="ingredients">
             <h2>Ingredientes</h2>
-            <div class="ingredient" data-price="10" draggable="true">Chocolate</div>
-            <div class="ingredient" data-price="15" draggable="true">Vainilla</div>
-            <div class="ingredient" data-price="20" draggable="true">Fresa</div>
+            <div class="ingredient" data-price="10" draggable="true">
+                <img src="https://via.placeholder.com/80?text=Chocolate" alt="Chocolate">
+            </div>
+            <div class="ingredient" data-price="15" draggable="true">
+                <img src="https://via.placeholder.com/80?text=Vainilla" alt="Vainilla">
+            </div>
+            <div class="ingredient" data-price="20" draggable="true">
+                <img src="https://via.placeholder.com/80?text=Fresa" alt="Fresa">
+            </div>
         </div>
         <div class="decorations">
             <h2>Decoraciones</h2>
-            <div class="decoration" data-price="5" draggable="true">Chispas</div>
-            <div class="decoration" data-price="8" draggable="true">Fondant</div>
-            <div class="decoration" data-price="12" draggable="true">Fruta</div>
+            <div class="decoration" data-price="5" draggable="true">
+                <img src="https://via.placeholder.com/80?text=Chispas" alt="Chispas">
+            </div>
+            <div class="decoration" data-price="8" draggable="true">
+                <img src="https://via.placeholder.com/80?text=Fondant" alt="Fondant">
+            </div>
+            <div class="decoration" data-price="12" draggable="true">
+                <img src="https://via.placeholder.com/80?text=Fruta" alt="Fruta">
+            </div>
         </div>
         <div class="cake-area">
             <h2>Tu Torta</h2>
@@ -96,8 +129,11 @@
         document.getElementById('cake').addEventListener('drop', drop);
 
         function dragStart(event) {
-            event.dataTransfer.setData('text/plain', event.target.textContent);
-            event.dataTransfer.setData('price', event.target.getAttribute('data-price'));
+            const price = event.target.getAttribute('data-price');
+            const imgSrc = event.target.querySelector('img').src;
+            event.dataTransfer.setData('text/plain', event.target.innerHTML);
+            event.dataTransfer.setData('price', price);
+            event.dataTransfer.setData('img', imgSrc);
         }
 
         function dragOver(event) {
@@ -106,12 +142,12 @@
 
         function drop(event) {
             event.preventDefault();
-            const ingredientName = event.dataTransfer.getData('text/plain');
+            const ingredientHTML = event.dataTransfer.getData('text/plain');
             const ingredientPrice = parseInt(event.dataTransfer.getData('price'));
+            const imgSrc = event.dataTransfer.getData('img');
             const cake = document.getElementById('cake');
             const newIngredient = document.createElement('div');
-            newIngredient.textContent = ingredientName;
-            newIngredient.classList.add('ingredient');
+            newIngredient.innerHTML = `<img src="${imgSrc}" alt="Ingrediente">`;
             cake.appendChild(newIngredient);
             totalPrice += ingredientPrice;
             document.getElementById('total-price').textContent = totalPrice;
